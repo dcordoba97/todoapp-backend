@@ -3,16 +3,12 @@ package com.apprentice.back.domain;
 import java.util.Date;
 
 public class TodoItem {
-
-    private String priority;
-
+    private Integer id;
     private String name;
     private String description;
     private Boolean isDone;
-    private Integer id;
     private Date dueDate;
-
-
+    private String priority;
 
     public TodoItem(Integer id, String name, String description, Boolean isDone, Date dueDate, String priority) {
         this.id = id;
@@ -31,17 +27,11 @@ public class TodoItem {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name; }
 
-    public String getDescription() {
-        return description;
-    }
+    public String getDescription() { return description; }
 
     public void setDescription(String description) {
         this.description = description;

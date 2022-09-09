@@ -1,23 +1,17 @@
 package com.apprentice.back.service.service;
 
-
+import java.util.HashMap;
 import com.apprentice.back.domain.TodoItem;
+import org.springframework.stereotype.Service;
 import com.apprentice.back.repo.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
 
 @Service
 public class TodoService {
-
     @Autowired
     private TodoRepository todoRepository;
     public HashMap<Integer, TodoItem> readTodoItems () {
         return todoRepository.readTodoItems();
-
     }
 
     public TodoItem readTodoItem(Integer todoItemId) {
