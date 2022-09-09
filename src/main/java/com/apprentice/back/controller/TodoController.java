@@ -1,32 +1,22 @@
 package com.apprentice.back.controller;
 
+import java.util.HashMap;
 import com.apprentice.back.domain.TodoItem;
-import com.apprentice.back.service.service.TodoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.apprentice.back.service.service.TodoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.net.http.HttpResponse;
-import java.util.HashMap;
-import java.util.List;
 
-
-// http://localhost:9090
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
 public class TodoController {
-
-    // front-end         javaserver
-    // Http request ---> Controller ---> Service ---> Repository
-    //  front-end   <--- Controller <--- Service <---
-
     @Autowired
     private TodoService todoService;
 
-    // fetch all todoItems from (database)
     @GetMapping("/api/todoItems")
     public ResponseEntity<?> getTodoItems() {
         HashMap<Integer, TodoItem> results = todoService.readTodoItems();
@@ -61,7 +51,4 @@ public class TodoController {
         if (result == null) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request. Make sure to fill up TODO properly.");
         return ResponseEntity.ok(result);
     }
-
-
-
 }

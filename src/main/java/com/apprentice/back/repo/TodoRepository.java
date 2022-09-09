@@ -1,10 +1,9 @@
 package com.apprentice.back.repo;
 
-import com.apprentice.back.domain.TodoItem;
-import org.springframework.stereotype.Repository;
-
 import java.util.Date;
 import java.util.HashMap;
+import com.apprentice.back.domain.TodoItem;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class TodoRepository {
