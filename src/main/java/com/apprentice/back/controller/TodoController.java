@@ -1,6 +1,9 @@
 package com.apprentice.back.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
 import com.apprentice.back.domain.TodoItem;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -20,7 +23,8 @@ public class TodoController {
     @GetMapping("/api/todoItems")
     public ResponseEntity<?> getTodoItems() {
         HashMap<Integer, TodoItem> results = todoService.readTodoItems();
-        return ResponseEntity.ok(results);
+        List<TodoItem> values = new ArrayList<>(results.values());
+        return ResponseEntity.ok(values);
     }
 
     @GetMapping("/api/todoItems/{todoItemId}")
@@ -32,9 +36,11 @@ public class TodoController {
 
     @DeleteMapping("/api/todoItems/{todoItemId}")
     public ResponseEntity<?> deleteTodoItem(@PathVariable Integer todoItemId) {
-        HashMap<Integer, TodoItem> result = todoService.deleteTodoItem(todoItemId);
-        if (result == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "TODO not found");
-        return ResponseEntity.ok(result);
+        HashMap<Integer, TodoItem> results = todoService.deleteTodoItem(todoItemId);
+        if (results == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "TODO not found");
+        List<TodoItem> values = new ArrayList<>(results.values());
+
+        return ResponseEntity.ok(values);
     }
 
     @PutMapping("/api/todoItems/{todoItemId}")
