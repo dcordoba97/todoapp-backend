@@ -18,7 +18,7 @@ In the project directory, you can run:
 
 ### `mvn spring-boot:run`
 
-Open [http://localhost:9090 to view it in your browser. or test it with Postman
+Open http://localhost:9090 to view it in your browser. or test it with Postman
 
 ### `npm run tests`
 
